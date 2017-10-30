@@ -16,7 +16,7 @@ const SimpleSlider = (function ($) {
     slideSelector: 'p',
     prevArrowSelector: '.arrows.prev',
     nextArrowSelector: '.arrows.next',
-    dataSelector: '.dot'
+    dotsSelector: '.dot'
   };
 
   slider.init = config => {
@@ -31,23 +31,25 @@ const SimpleSlider = (function ($) {
     //get prev button element
     $prev = $(slider.config.prevArrowSelector);
     //get next button element
-    $next = $(slider.config.dataSelector);
+    $next = $(slider.config.nextArrowSelector);
     //get dots container element
-    $dots = $(slider.config.dataSelector);
+    $dots = $(slider.config.dotsSelector);
     //hook up prev button
     $prev.click(slider.prev);
     //hook up next button
     $next.click(slider.next);
     //hook up dots nav
-    $dots.each( (f, dot) => {
-      $(dot).click( () => slider.setSlideByIndex(i) );
+    $dots.each( (i, dot) => {
+      $(dot).click( () => {
+        slider.setSlideByIndex($dots.index(dot));
+      });
     });
     //activiate first slide
     $($slide[0]).addClass('activeText');
     //activate first dot
     $($dots[0]).addClass('active');
     //slide automatically or Nah ...
-    if (slider.config.auto).autoNext();
+    if (slider.config.auto) autoNext();
   };
 
   //Slides autumotacially
@@ -98,15 +100,15 @@ const SimpleSlider = (function ($) {
      //apply activeText class to next slide
      //if on last slide
      if (currentIndex === 0) {
-       //make first slide active
-       $($slides[0]).addClass('activeText');
+       //make last slide active
+       $slides[$slides.length - 1].classList.add('activeText');
        //make first dot active
-       $($dots[0]).addClass('active');
+       $dots[$dots.length - 1].classList.add('active');
      } else {
-       //make next slide active
-       $($slides[currentIndex + 1]).addClass('activeText');
-       //make next slide dot
-       $($dots[currrentIndex + 1]).addClass('active');
+       //make prev slide active
+       $($slides[currentIndex - 1]).addClass('activeText');
+       //make prev dot active
+       $($dots[currrentIndex - 1]).addClass('active');
      }
    };
 
