@@ -1,6 +1,5 @@
 const SimpleSlider = (function ($) {
 
-  //initialize Slider Object and return it
   let slider = {},
     $container,
     $slides,
@@ -19,6 +18,7 @@ const SimpleSlider = (function ($) {
     dotsSelector: '.dot'
   };
 
+  //initialize slider with config
   slider.init = config => {
     //config provided merge with default settings
     if (config && typeof(config) == 'object') {
@@ -54,7 +54,6 @@ const SimpleSlider = (function ($) {
 
   //Slides autumotacially
   //private function
-
    function autoNext() {
      setInterval(slider.next, slider.config.slideDuration);
    }
@@ -82,7 +81,7 @@ const SimpleSlider = (function ($) {
        //make next slide active
        $($slides[currentIndex + 1]).addClass('activeText');
        //make next slide dot
-       $($dots[currrentIndex + 1]).addClass('active');
+       $($dots[currentIndex + 1]).addClass('active');
      }
    };
 
@@ -108,7 +107,7 @@ const SimpleSlider = (function ($) {
        //make prev slide active
        $($slides[currentIndex - 1]).addClass('activeText');
        //make prev dot active
-       $($dots[currrentIndex - 1]).addClass('active');
+       $($dots[currentIndex - 1]).addClass('active');
      }
    };
 
