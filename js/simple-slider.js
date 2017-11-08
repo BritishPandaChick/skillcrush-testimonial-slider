@@ -1,3 +1,7 @@
+//SimpleSlider is an immediately involved function expression (IIFE)
+//It creates a protected scope for our slider code
+//Helps us avoid declaring variables in the global scope
+
 const SimpleSlider = (function ($) {
 
   let slider = {},
@@ -9,7 +13,7 @@ const SimpleSlider = (function ($) {
 
   //set up slider config defaults
   slider.config = {
-    slideDuration: 5000;
+    slideDuration: 5000,
     auto: true,
     containerSelector: '#simpleSlider',
     slideSelector: 'p',
@@ -45,7 +49,7 @@ const SimpleSlider = (function ($) {
       });
     });
     //activiate first slide
-    $($slide[0]).addClass('activeText');
+    $($slides[0]).addClass('activeText');
     //activate first dot
     $($dots[0]).addClass('active');
     //slide automatically or Nah ...
@@ -62,7 +66,7 @@ const SimpleSlider = (function ($) {
    //public method
    slider.next = () => {
      //get active slide
-     const activeSlide = $slides.fliter('.activeText');
+     const activeSlide = $slides.filter('.activeText');
      //get active dot
      const activeDot = $dots.filter('.active');
      //get current index
@@ -121,12 +125,11 @@ const SimpleSlider = (function ($) {
      activeSlide.removeClass('activeText');
      activeDot.removeClass('active');
      //make slide at given index active
-     $($slides[index].addClass('activeText');
+     $($slides[index]).addClass('activeText');
      //make slide at given index active
      $($dots[index]).addClass('active');
    };
 
   //return the slider object with public methods
   return slider;
-
 }(jQuery)); //pass in any needed global variables
