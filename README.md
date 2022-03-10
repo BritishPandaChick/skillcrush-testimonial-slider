@@ -1,5 +1,11 @@
 # Skillcrush Testimonial Slider
-Skillcrush code along testimonial slider project for October 27, 2017. Made with HTML, CSS, and JavaScript.
+Skillcrush code along project for alumni on October 27, 2017. 
+
+## Dependencies
+* HTML
+* CSS
+* JavaScript
+* jQuery
 
 ## Instructions
 Clone or download zip file. Open index.html file in your browser.
@@ -9,3 +15,4 @@ This repository is based on starter code from Skillcrush. Therefore I will not b
 
 ## Acknowledgements
 * Skillcrush
+* Simple Slider
